@@ -43,8 +43,15 @@ Now lets look at the same number, 245. We look at
 
 > BINARY REPRESENTATION OF 245 WITH THE CHART ^
 
+We know that integers can be positive or negative. The way that we can represent whether an integer is postive or negative in binary is using 2s complement. By looking at the binary representation of an integer, if the leftmost bit (or the most signifitcant bit) is 0, then the integer is positive. If the leftmost bit is 1, then the integer is negative. 
+
+For example, the integer 5 has a binary representation of 0101. To make it negative with 2s complement, we first invert all the bits to get 1010, and then add 1 to the end to get 1011.
+
+> 5: 0101 (leftmost bit is 0)
+> -5: 1011 (leftmost bit is 1)
+
 FURTHER TOPICS TO DISCUSS:
-- 2s complement
+~~- 2s complement~~
 - integers made up of multiple bytes
 - every data chunk you get is in a byte
 - how to combine bytes (higher and lower order explanation)
