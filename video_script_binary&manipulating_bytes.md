@@ -63,11 +63,16 @@ Now, what if we want a number higher than 255? This is when we start increasing 
 > CHART OF 2003, -2003
 > SHOW EXAMPLE CREATION OF AN INT16_T
 
-FURTHER TOPICS TO DISCUSS:
-~~- 2s complement~~
-~~- integers made up of multiple bytes~~
+When we obtain data chunks, we commonly obtain them in a byte. Remember that a byte holds 8 bits, which goes up to 255 in binary. We've talked about how we can represent integers, but now we want to represent characters. To do this, we can use ASCII encoding, which maps a specific character to an integer. The ASCII table holds 128 unique characters, so we only need 7 bits to represent them all. The last bit just ends up being set to 0. 
 
-- every data chunk you get is in a byte (talk about characters)
+For example, the character "q" has an ASCII value of 113. 113 in binary is 01110001. So the byte 01110001 encodes the character "q".
+
+
+FURTHER TOPICS TO DISCUSS:
+- ~~-2s complement~~
+- ~~-integers made up of multiple bytes~~
+- ~~every data chunk you get is in a byte (talk about characters)~~
+
 - how to combine bytes (higher and lower order explanation)
 - manipulating bytes (shifting, bitwise or, bitwise and, bitwise xor, bitwise not, concatenating bytes (shift + or))
 - why this matters (example of constructing a packet with a fake protocol and fake data)
