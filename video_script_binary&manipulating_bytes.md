@@ -58,23 +58,40 @@ Lets also look briefly at another set of numbers, 123 and -123. As you can see, 
 
 > CHART OF 123 and -123
 
-Now, what if we want a number higher than 255? This is when we start increasing the number of bytes that each integer takes. Let's consider the integer 2003. In binary, this is 11111010011, however we will be padding it out to the next highest multiple of 8, so it is 0000011111010011, which is 16 bits and 2 bytes. If you wanted to store a number like this in C or C++, this is the data type int16_t. If we wanted to get -2003, we have 1111100000101101. It follows the same rules as the 8 bit integer, except its bigger. 
+Now, what if we want a number higher than 255? This is when we start increasing the number of bytes that each integer takes. Let's consider the integer 2003. In binary, this is 11111010011, however we will be padding it out to the next highest multiple of 8, so it is 00000111_11010011, which is 16 bits, or 2 bytes. If you wanted to store a number like this in C or C++, this is the data type int16_t. If we wanted to get -2003, we have 11111000_00101101. It follows the same rules as the 8 bit integer, except its bigger.
 
 > CHART OF 2003, -2003
 > SHOW EXAMPLE CREATION OF AN INT16_T
 
-When we obtain data chunks, we commonly obtain them in a byte. Remember that a byte holds 8 bits, which goes up to 255 in binary. We've talked about how we can represent integers, but now we want to represent characters. To do this, we can use ASCII encoding, which maps a specific character to an integer. The ASCII table holds 128 unique characters, so we only need 7 bits to represent them all. The last bit just ends up being set to 0. 
+When we obtain data chunks, we commonly obtain them in a byte. Remember that a byte holds 8 bits, which goes up to 255 in binary. We've talked about how we can represent integers, but now we want to represent characters. To do this, we can use ASCII encoding, which maps a specific character to an integer. The ASCII table holds 128 unique characters, so we only need 7 bits to represent them all. The last bit just ends up being set to 0.
 
-For example, the character "q" has an ASCII value of 113. 113 in binary is 01110001. So the byte 01110001 encodes the character "q".
+For example, the character "q" has an ASCII value of 113. 113 in binary is 01110001. So the byte 01110001 encodes the character "q". In fact, the character data type `char` is just a uint8_t.  They are the same datatype. With this realization also comes the fact that you can have the same byte interpreted and used in different ways, you can have the number 113 stored as a uint8_t, and then cast it and use it as a character, if that suits your needs.
 
+> ASCII TABLE FULL ^
+
+There are other ways that we may want to manipulate bytes. There are bitwise versions of all major operations, like and, or, not, and xor. Lets say we have an int8_t, and we want to select certain bits of it. We can run an and operation to select the bits we want and discard the rest. If I have the `uint8_t x = 01010011`, and I want to select the least significant (rightmost) 4 bits, I can preform an and operation with `x` and the byte 00001111, which will perform the and operation on each bit and return the result, in this case returning 00000011. If I wanted the most significant four bits, I could and `x` with 11110000, resulting in 01010000.
+
+The same applies for all other operations, xor, or, and not. You can see here a few examples of these operations on the byte `x`. All these manipulations can be done with single bytes (uint8_t), but these can also be done with (uint16_t), as well as their signed int variants int8_t and int16_t.
+
+> XOR x with 11111111 and show result, and code
+>
+> XOR x with 11110000 and show result, and code
+>
+> NOT x and show result, and code
+>
+> OR x with 11010001 and show result, and code
+
+There's one more operation that we can talk about, and thats bit shifting. By using one of the shift operators, either shift left or shift right, which is double less than sign or double greater than sign respectively, we can shift bits to the left or the right. Now, what exactly does that mean. That means that if I have the `uint16_t y = 11110100_01010011`, then I can do `y << 8` and what will be returned is `01010011_00000000`, which is the original y shifted to the left by 8 bits. Notice that the bits that were on the left were eliminated. Since this is an int16, it only stores 16 bits and if we try to shift left of that, they are removed. Lets also attempt `y >> 8`, which results in `00000000_11110100`, which is y shifted to the right by 8. Notice again that the bits that were previously on the right were shifted out of existence. This is one major thing to keep in mind with shifting bits, which is that its important to know what type of 
+
+Now, lets say I have 2 int8s that I want to combine into an int16, how do I do this?
 
 FURTHER TOPICS TO DISCUSS:
+
 - ~~-2s complement~~
 - ~~-integers made up of multiple bytes~~
 - ~~every data chunk you get is in a byte (talk about characters)~~
-
 - how to combine bytes (higher and lower order explanation)
-- manipulating bytes (shifting, bitwise or, bitwise and, bitwise xor, bitwise not, concatenating bytes (shift + or))
+- ~~manipulating bytes (shifting, bitwise or, bitwise and, bitwise xor, bitwise not, concatenating bytes (shift + or))~~
 - why this matters (example of constructing a packet with a fake protocol and fake data)
 - - (EXAMPLE PROTOCOL: YOU NEED TO DECONSTRUCT A PACKET OF 8 BYTES IN LENGTH, AND HERE ARE THE BYTE COMPOSITIONS:
     [BYTE 1: HIGHER VELOCITY]
