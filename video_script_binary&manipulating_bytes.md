@@ -81,17 +81,32 @@ The same applies for all other operations, xor, or, and not. You can see here a 
 >
 > OR x with 11010001 and show result, and code
 
-There's one more operation that we can talk about, and thats bit shifting. By using one of the shift operators, either shift left or shift right, which is double less than sign or double greater than sign respectively, we can shift bits to the left or the right. Now, what exactly does that mean. That means that if I have the `uint16_t y = 11110100_01010011`, then I can do `y << 8` and what will be returned is `01010011_00000000`, which is the original y shifted to the left by 8 bits. Notice that the bits that were on the left were eliminated. Since this is an int16, it only stores 16 bits and if we try to shift left of that, they are removed. Lets also attempt `y >> 8`, which results in `00000000_11110100`, which is y shifted to the right by 8. Notice again that the bits that were previously on the right were shifted out of existence. This is one major thing to keep in mind with shifting bits, which is that its important to know what type of 
+There's one more operation that we can talk about, and thats bit shifting. By using one of the shift operators, either shift left or shift right, which is double less than sign or double greater than sign respectively, we can shift bits to the left or the right. Now, what exactly does that mean. That means that if I have the `uint16_t y = 11110100_01010011`, then I can do `y << 8` and what will be returned is `01010011_00000000`, which is the original y shifted to the left by 8 bits. Notice that the bits that were on the left were eliminated. Since this is an int16, it only stores 16 bits and if we try to shift left of that, they are removed. Lets also attempt `y >> 8`, which results in `00000000_11110100`, which is y shifted to the right by 8. Notice again that the bits that were previously on the right were shifted out of existence. This is one major thing to keep in mind with shifting bits, which is that its important to know what type of
 
-Now, lets say I have 2 int8s that I want to combine into an int16, how do I do this?
+Now, lets say I have 2 int8s that I want to combine into an int16, how do I do this? It's important to know which is the higher order byte (the most significant byte), and which one is the lower order byte (the least significant byte). In this case, lets say we have x and y, and x is the higher order and y is the lower order byte.
+
+Next, its important to cast the int8s as int16s, since we need to make sure that we can shift them around without any issue. We can shift x to the left by 8, and then perform the OR operation on both numbers to combine their bits into one. Here is an example. Lets say we want to combine these two bytes, x = 10010100 and y = 00101011. As mentioned before, we shift x 8 to the left, which results us with 10010100_00000000. Then, we can bitwise OR that with y, and that will result us with 10010100_00101011, which is what we want.
+
+> DIAGRAM WITH ABOVE ^
+
+The same way that we can combine bytes to make ints, we can also split an int into its component bytes. Lets say we have an int16 that we want to split into two bytes. See if you can take a minute and think of a way to do that with all the methods we've learned about, using bitwise OR, bit shifting, and bitwise AND.
+
+5 SECOND PAUSE
+
+Lets take the byte z = 10010100_00101011, and split it into its higher and lower order bytes. For the higher order byte, we can perform a bitwise AND operation with the byte 00000000_11111111, which will choose all of the  lower order 8 bits, and ignore the rest. For the higher order 8 bytes, you can shift it rightwards by 8, and then do the same thing, the bitwise AND operation, which will again select only the rightmost 8 bits. 
+
+> DIAGRAM WITH ABOVE ^
 
 FURTHER TOPICS TO DISCUSS:
 
 - ~~-2s complement~~
 - ~~-integers made up of multiple bytes~~
 - ~~every data chunk you get is in a byte (talk about characters)~~
-- how to combine bytes (higher and lower order explanation)
+- ~~how to combine bytes (higher and lower order explanation)~~
 - ~~manipulating bytes (shifting, bitwise or, bitwise and, bitwise xor, bitwise not, concatenating bytes (shift + or))~~
+- ~~How to split ints into bytes.~~
+- hexadecimal (somewhere in middle)
+- casting (add it somewhere in the middle)
 - why this matters (example of constructing a packet with a fake protocol and fake data)
 - - (EXAMPLE PROTOCOL: YOU NEED TO DECONSTRUCT A PACKET OF 8 BYTES IN LENGTH, AND HERE ARE THE BYTE COMPOSITIONS:
     [BYTE 1: HIGHER VELOCITY]
