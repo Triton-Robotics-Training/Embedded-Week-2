@@ -39,6 +39,12 @@ This same thing applies to binary, where each digit is goes up in magnitude, but
 > 2^2*n_2+2^1*n_1+2^0*n_0
 > $$
 
+Another commonly used numeral system is hexadecimal, which is base 16. we have 0-9, and then 10-15 are represented by characters. A is 10, B is 11, and so on. For 245, its hexadecimal representation is 0xF5 (the 0x just tells us that its using hexadecimal).
+
+> IMAGE OF HEXIDECIMAL TO DECIMAL CHART FOR 0-15.
+
+F is 15 and 5 is just 5, so we have 15*16^1 + 5*16^0, which equals 245.
+
 Now lets look at the same number, 245. We can look again at a binary representation of 245, which is 11110101. What does this mean? This means 2^7 * 1 + 2^6 * 1 and so on, as you can see in the chart. Each digit signifies a different power of 2, and with each of these powers you can construct every number. However, this only works for positive numbers, there is a different way that we represent negative numbers.
 
 > BINARY REPRESENTATION OF 245 WITH THE CHART ^
