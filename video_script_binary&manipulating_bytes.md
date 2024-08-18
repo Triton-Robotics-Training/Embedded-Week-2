@@ -105,6 +105,11 @@ Lets take the byte z = 10010100_00101011, and split it into its higher and lower
 
 > DIAGRAM WITH ABOVE ^
 
+Now, all this matters because of how we want to interpret packets that we recieve. For example, in a packet of 8 bytes in length, we could have {0x78, 0x1E, 0x55, 0x0F, 0x14, 0x19, 0xE6, 0x00}. Bytes 1-7 are higher velocity, lower velocity, current, lower temperature, middle temperature, highest temperature, and voltage respectively. Byte 8 is just an empty reserved byte. 
+
+By converting from hexidecimal to decimal, we see that higher velocity is 120, lower velocity is 30, current is 85, lower temperature is 15, middle temperature is 20, highest temperature is 25, and voltage is 230. From this 8 byte packet we have just gained all this information that we can use.
+
+
 FURTHER TOPICS TO DISCUSS:
 
 - ~~-2s complement~~
@@ -113,9 +118,9 @@ FURTHER TOPICS TO DISCUSS:
 - ~~how to combine bytes (higher and lower order explanation)~~
 - ~~manipulating bytes (shifting, bitwise or, bitwise and, bitwise xor, bitwise not, concatenating bytes (shift + or))~~
 - ~~How to split ints into bytes.~~
-- hexadecimal (somewhere in middle)
+- ~~hexadecimal (somewhere in middle)~~
 - casting (add it somewhere in the middle)
-- why this matters (example of constructing a packet with a fake protocol and fake data)
+- ~~why this matters (example of constructing a packet with a fake protocol and fake data)~~
 - - (EXAMPLE PROTOCOL: YOU NEED TO DECONSTRUCT A PACKET OF 8 BYTES IN LENGTH, AND HERE ARE THE BYTE COMPOSITIONS:
     [BYTE 1: HIGHER VELOCITY]
     [BYTE 2: LOWER VELOCITY]
