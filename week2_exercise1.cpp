@@ -1,3 +1,7 @@
+//STARTER 
+//THIS EXERCISE IS TO BE DONE IN A GENERIC C++ COMPILER
+//https://www.programiz.com/cpp-programming/online-compiler/
+//IF YOU HAVE ISSUES WITH THE COMPILER, CONTACT EMBEDDED LEAD
 const int BUFFER_SIZE = 26;
 const int offset = 1;
 #include <iostream>
@@ -25,6 +29,6 @@ char numberToLetter(char i){
 int main(void)
 {
     //CODE GOES HERE 
-    
+
     putc('\n');
 }
