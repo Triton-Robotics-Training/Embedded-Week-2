@@ -39,7 +39,7 @@ This same thing applies to binary, where each digit is goes up in magnitude, but
 > 2^2*n_2+2^1*n_1+2^0*n_0
 > $$
 
-Another commonly used numeral system is hexadecimal, which is base 16. For hexidecimal, it goes from 0-9 and then 10-15, but 10-15 are represented by characters. A is 10, B is 11, and so on. For 245, its hexadecimal representation is 0xF5 (the 0x just tells us that its using hexadecimal).
+Another commonly used numeral system is hexadecimal, which is base 16. For hexadecimal, it goes from 0-9 and then 10-15, but 10-15 are represented by characters. A is 10, B is 11, and so on. For 245, its hexadecimal representation is 0xF5 (the 0x just tells us that its using hexadecimal).
 
 > IMAGE OF HEXIDECIMAL TO DECIMAL CHART FOR 0-15.
 
@@ -101,14 +101,31 @@ The same way that we can combine bytes to make ints, we can also split an int in
 
 5 SECOND PAUSE
 
-Lets take the byte z = 10010100_00101011, and split it into its higher and lower order bytes. For the higher order byte, we can perform a bitwise AND operation with the byte 00000000_11111111, which will choose all of the  lower order 8 bits, and ignore the rest. For the higher order 8 bytes, you can shift it rightwards by 8, and then do the same thing, the bitwise AND operation, which will again select only the rightmost 8 bits. 
+Lets take the byte z = 10010100_00101011, and split it into its higher and lower order bytes. For the higher order byte, we can perform a bitwise AND operation with the byte 00000000_11111111, which will choose all of the  lower order 8 bits, and ignore the rest. For the higher order 8 bytes, you can shift it rightwards by 8, and then do the same thing, the bitwise AND operation, which will again select only the rightmost 8 bits.
 
 > DIAGRAM WITH ABOVE ^
 
-Now, all this matters because of how we want to interpret packets that we recieve. For example, in a packet of 8 bytes in length, we could have {0x78, 0x1E, 0x55, 0x0F, 0x14, 0x19, 0xE6, 0x00}. Bytes 1-7 are higher velocity, lower velocity, current, lower temperature, middle temperature, highest temperature, and voltage respectively. Byte 8 is just an empty reserved byte. 
+Now, all this matters because of how we want to interpret packets that we recieve. Most data that we recieve is in packets, and packets are basically an arrangement of a list of bytes that we recieve. To use a packet, you need to know what data is in it, where, and how, so lets look at this example packet.
 
-By converting from hexidecimal to decimal, we see that higher velocity is 120, lower velocity is 30, current is 85, lower temperature is 15, middle temperature is 20, highest temperature is 25, and voltage is 230. From this 8 byte packet we have just gained all this information that we can use.
+You can see here the structure of the packet, and this describes how each byte is sent and recieved. Lets look at an example packet of 8 bytes in length, we could have {0x14, 0xBE, 0xEF, 0x54, 0xFF, 0x74, 0x47, 0x00}.
 
+If we look back at this packet description, we can look at each of these bytes and start to see what they mean. Byte 0 is nothing, its empty, so we can ignore it. Byte 1 and 2 are the higher and lower byte respectively
+
+By converting from hexidecimal to decimal, we see that angle is 5310, velocity is -4268, torque is -140, and temperature is 71. If we look at the packet structure, we know that the angle maps from 0 to 8191, so this is around 233.4 degrees. Velocity is in RPM, so the motor is moving -4268 RPM. 71 is in C so we know the motor is 71 degrees C, and the torque reading has no unit so we know nothing.
+
+> diagram with this, and matched up each of the bytes with the diagram
+> [BYTE 0: HIGHER ORDER ANGLE]
+> [BYTE 1: LOWER ORDER ANGLE]
+> [BYTE 2: HIGHER ORDER VELOCITY]
+> [BYTE 3: LOWER ORDER VELOCITY]
+> [BYTE 4: HIGHER ORDER TORQUE]
+> [BYTE 5: LOWER ORDER TORQUE]
+> [BYTE 6: TEMPERATURE]
+> [BYTE 7: NULL] 
+>
+> (Feedback, in assets folder)
+
+This concludes our Bytes & Bits video, if you have any questions about any of the topics here, please contact your lead or an Embedded TA and they will be able to provide you with more information.
 
 FURTHER TOPICS TO DISCUSS:
 
