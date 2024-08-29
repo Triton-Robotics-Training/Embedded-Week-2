@@ -12,6 +12,8 @@ CAN is message-oriented protocol that broadcasts messages to all nodes on the ne
 
 > Show image of with CAN vs without CAN 
 
+![](images/video_script_can_spi_i2c/Can Difference.gif)
+
 CAN is important because it allows for a single interface rather than have the ECU (electronic control unit) communicate seperately with every device.
 
 > Show image of CAN high and CAN low difference
