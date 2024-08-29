@@ -2,51 +2,51 @@ This is week 2's CAN SPI and I2C video:
 
 In this video, we're focusing on CAN, SPI, and I2C. We will talk about their functions, how they differ, and how we use them on our robots. 
 
-> Title card (CAN SPI AND I2C)
+<img src="image/video_script_can_spi_i2c/TITLE_CARD.png" width="300">
 
 # CAN 
+<img src="image/video_script_can_spi_i2c/CAN_TITLE_CARD.png" width="300">
 
-> Show image of a CAN wire
+<img src="image/video_script_can_spi_i2c/CAN_BUS_CONNECTOR.webp" width="300">
+
 
 CAN is message-oriented protocol that broadcasts messages to all nodes on the network, and then each node can decide whether they want to process the message. 
 
-> Show image of with CAN vs without CAN 
-
-![](images/video_script_can_spi_i2c/Can_Difference.gif)
+<img src="image/video_script_can_spi_i2c/CAN-IO.jpg" width="500">
 
 CAN is important because it allows for a single interface rather than have the ECU (electronic control unit) communicate seperately with every device.
 
-> Show image of CAN high and CAN low difference
+<img src="image/video_script_can_spi_i2c/CAN_HIGH_LOW.png" width="300">
 
 For CAN, we have 2 wires, CAN high and CAN low. The data is represented by the difference in voltage between these two lines, which help minimize noise, since any noise will affect both lines equally.
 
 For the CAN protocol, a main usecase of it is how we use it to communicate commands to motor controllers. With the motors on our robot, there may be a CAN bus that connects it to a microcontroller. Through this connection, we can specify certain speeds, direction, or torque that we want. 
 
-> Show image of differetn CAN bus errors
 
 CAN provides feedback mechnisms that allow it to report the status of the motor back to the microcontroller, which can help with error detection.
 
 # I2C
 
-> Show I2C title card
+<img src="image/video_script_can_spi_i2c/I2C_TITLE_CARD.png" width="300">
 
 For I2C, it provides communication between master devices and slave devices. Master devices control the communication, and slave devices only respond when addressed by the master. 
 
-> Show graph with master and slave labels
+<img src="image/video_script_can_spi_i2c/MASTER_SLAVE.jpg" width="300">
+
 
 I2Cs use 2 wires, SDA (Serial Data Line) and SCL (Serial Clock Line). SDA carries data and SCL carries the clock signal. When the clock starts to go high, then data is sampled.
 
-> Show picture of IMU
+<img src="image/video_script_can_spi_i2c/IMU.jpg" width="200">
 
 On our robot, an example of I2C is our IMU or inertial measurement unit. IMUs measure and report force, acceleration, orientation, angular rate, and other gravitational forces. When the IMU is connected to a microcontroller with I2C, I2C sends and recieves sensor data to and from the microcontroller.
 
 # SPI
 
-> Show SPI card
+<img src="image/video_script_can_spi_i2c/SPI_TITLE_CARD.png" width="300">
 
 With SPI, its commonly used when fast transfer is needed between a microcontroller and peripheral devices.
 
-> Show SPI wiring structure
+<img src="image/video_script_can_spi_i2c/SPI_INTERFACE.jpg" width="300">
 
 There are 4 wires, MOSI (Master Out, Slave In), MISO (Master In, Slave out), SCK (Serial Clock), and SS/CK (Slave Select/Chip Select). 
 
