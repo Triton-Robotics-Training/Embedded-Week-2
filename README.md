@@ -39,6 +39,8 @@ With 8 bits, the maximum number you can get is 255. However, that is only positi
 
 Observe here, we have two bytes at the top, `0b00000100` and `0b10110000` (The `0b` defines the number as binary). From there, we get two unsigned int8s (uint8), which are 4 and 176. If we instead use the entire 16 bits as its own integer, we get one large integer, 1200, an int16.
 
+Please watch this informative video that goes into a great deal of depth on bits, bytes, and binary:
+
 # Serial (UART)
 
 Serial, or UART, is a dual pin protocol that operates on a pre-defined clock. You will sometimes use one data pin however, as one is TX (transmitting), and one is RX (recieving). You will not always need to both transmit and recieve. For example, with the radio we use, we only recieve data, so we don't have a TX pin for that.
@@ -81,6 +83,13 @@ A number of helper functions have been given to you, such as
 Your task is to implement a simple, lowercase only caesar cipher, the input string has been given at the top, and using that and any of the functions given *and any more you may want to construct*, simply print out the message, shifted one forward (a becomes b, b becomes c, h becomes i, etc.)
 
 **KEY THING TO REMEMBER**, remember that using putc or printf, nothing will show unless you have a newline at the end, thats what flushes the internal buffer to the screen. Without a newline, nothing will print.
+
+# Protocols:
+
+Before you read the following, please watch this video, where we go over some stuff:
+[Embedded Training - CAN SPI I2C](https://youtu.be/Kz8soYV2pmk)
+
+![img](assets/video_panels/video2_can_spi_i2c/TITLE_CARD.png)
 
 # CAN (Controller Area Network)
 
