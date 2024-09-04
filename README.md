@@ -39,7 +39,10 @@ With 8 bits, the maximum number you can get is 255. However, that is only positi
 
 Observe here, we have two bytes at the top, `0b00000100` and `0b10110000` (The `0b` defines the number as binary). From there, we get two unsigned int8s (uint8), which are 4 and 176. If we instead use the entire 16 bits as its own integer, we get one large integer, 1200, an int16.
 
-Please watch this informative video that goes into a great deal of depth on bits, bytes, and binary:
+Please watch this informative video that goes into a great deal of depth on bits, bytes, and binary. This will be of great help to you when you are doing exercise 2: [Embedded Training - Binary & Bytes](https://youtu.be/c7q9xLJ4IZI)
+![](assets/video_panels/video1_bytes_and_binary/TitleCard.png)
+
+You can also read the video script, which is in the main directory.
 
 # Serial (UART)
 
@@ -84,12 +87,42 @@ Your task is to implement a simple, lowercase only caesar cipher, the input stri
 
 **KEY THING TO REMEMBER**, remember that using putc or printf, nothing will show unless you have a newline at the end, thats what flushes the internal buffer to the screen. Without a newline, nothing will print.
 
+# Exercise #2
+
+Take the starter code given in [week2_exercise2.cpp](https://github.com/Triton-Robotics-Training/Week-2/blob/main/week2_exercise2.cpp). This training can be done in a simple C++ online compiler, such as [this](https://www.programiz.com/cpp-programming/online-compiler/)
+A number of helper functions have been given to you, such as
+
+- **putc** (put a character into the output stream)
+
+You also have two more functions purely for debugging
+
+- **putc_hex** (put a character into the output stream (as hexadecimal))
+- **putc_bin** (put a character into the output stream (as binary))
+
+Your task is to implement the following decryption sequence on the given sequence of bytes: 
+There are bits 0-7
+Bits 0,1,2 shift to bits 5,6,7
+Bits 5 and 6 you invert and move to bits 0 and 1
+Bit 3 goes to 2
+Bit 4 inverts and goes to bit 3
+Bit 7 goes to 4 
+
+If you do this correctly, you should get a nice message on the output.
+
+Here is an image that describes this visually:
+
+![](assets/week2_exercise2.png)
+
+**KEY THING TO REMEMBER**, remember that using putc or printf, nothing will show unless you have a newline at the end, thats what flushes the internal buffer to the screen. Without a newline, nothing will print.
+
 # Protocols:
 
 Before you read the following, please watch this video, where we go over some stuff:
 [Embedded Training - CAN SPI I2C](https://youtu.be/Kz8soYV2pmk)
 
 ![img](assets/video_panels/video2_can_spi_i2c/TITLE_CARD.png)
+
+You can also read the video script, which is in the main directory.
 
 # CAN (Controller Area Network)
 
@@ -177,3 +210,25 @@ SPI is a four-pin protocol. It's four pins are PICO or MISO (Peripheral In Contr
 This is the standard way to wire SPI, where you have a shared SCK, PICO, and POCI, but each device has its own CS. This means you cant interact with multiple devices at the same time, but as a result it is much simpler of a protocol than I2C and CAN, and more noise immune.
 
 If you'd like to learn more about SPI, you can do so [here](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi).
+
+# Exercise #3
+
+Take the starter code given in [week2_exercise3.cpp](https://github.com/Triton-Robotics-Training/Week-2/blob/main/week2_exercise3.cpp). This training can be done in a simple C++ online compiler, such as [this](https://www.programiz.com/cpp-programming/online-compiler/)
+A number of helper functions have been given to you, such as
+
+- **can.sendPacket(short id, uint8_t* packet, short length)** (send a message with an id, pass in the packet's array, and the length of the packet)
+- **can.readPacket(short* id, uint8_t* packet, short* length)** (pass a short and it will be filled with the id, pass in the packet's array and it will be filled witht the packet, pass a short and it will be filled with the length)
+- **printPacket(uint8_t* packet, short length)** (print a packet passed in, with a length)
+
+Your task is to encode and send, and then decode the returning packet. The packet follows the following rules, as seen in the binary&bytes video:
+
+![](assets/video_panels/video1_bytes_and_binary/packet.png)
+
+You can modify angle, velocity, torque, and temperature, and when sending you should use those variables. I have some possible test cases recorded.
+When recieving, the srand() at the top of the main will determine the test case, and I have the correct values recorded for 1, 2, and 3.
+
+You will essentially be splitting the input numbers into bytes and packing them correctly into the 8 byte array and sending, and then on the recieving end, be unpacking the packet into its correct values and printing them.
+
+If you have any questions, ask your lead, or look at the binary&bytes video.
+
+**KEY THING TO REMEMBER**, remember that using putc or printf, nothing will show unless you have a newline at the end, thats what flushes the internal buffer to the screen. Without a newline, nothing will print.
