@@ -42,7 +42,7 @@ Base 10 means that our number's digits each go up in magnitudes of 10, so the ri
 > IMAGE OF BASE 2 POWER CHART AND EQUATION↓
 >
 > $$
-> 2^2*n_2+2^1*n_1+2^0*n_0
+> 2^2*n_2+2^1*n_1+2^0*n_0 \\
 >    \color{white}{2^7\color{red}{1}+2^6\color{red}{1}+2^5\color{red}{1}+2^4\color{red}{1}+2^3\color{red}{0}+2^2\color{red}{1}+2^1\color{red}{0}+2^0\color{red}{1} = 245}
 > $$
 
