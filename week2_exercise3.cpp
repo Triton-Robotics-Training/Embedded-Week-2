@@ -13,7 +13,7 @@ void printPacket(uint8_t* packet, short length){
 class CAN{
 private:
     uint8_t stored[8] = {0,0,0,0,0,0,0,0};
-    uint8_t id;
+    short id;
 public: 
     CAN(){}
     
