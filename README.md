@@ -42,7 +42,7 @@ Observe here, we have two bytes at the top, `0b00000100` and `0b10110000` (The `
 Please watch this informative video that goes into a great deal of depth on bits, bytes, and binary. This will be of great help to you when you are doing exercise 2: [Embedded Training - Binary & Bytes](https://youtu.be/c7q9xLJ4IZI)
 ![](assets/video_panels/video1_bytes_and_binary/TitleCard.png)
 
-You can also read the video script, which is in the main directory.
+You can also read the video script, which is [video_script_binary&manipulating_bytes.md](video_script_binary&manipulating_bytes.md).
 
 # Serial (UART)
 
@@ -118,7 +118,7 @@ Here is an image that describes this visually:
 # Protocols:
 
 Before you read the following, please watch this video, where we go over some stuff:
-[Embedded Training - CAN SPI I2C](https://youtu.be/Kz8soYV2pmk)
+[Embedded Training - CAN SPI I2C](https://youtu.be/Kz8soYV2pmk). The script for this video can be found in the [video_script_can_spi_i2c.md](video_script_can_spi_i2c.md)
 
 ![img](assets/video_panels/video2_can_spi_i2c/TITLE_CARD.png)
 
