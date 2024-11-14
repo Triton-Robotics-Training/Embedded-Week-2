@@ -99,13 +99,7 @@ You also have two more functions purely for debugging
 - **putc_hex** (put a character into the output stream (as hexadecimal))
 - **putc_bin** (put a character into the output stream (as binary))
 
-Your task is to implement the following decryption sequence on the given sequence of bytes: 
-There are bits 0-7
-Bits 0,1,2 shift to bits 5,6,7
-Bits 5 and 6 you invert and move to bits 0 and 1
-Bit 3 goes to 2
-Bit 4 inverts and goes to bit 3
-Bit 7 goes to 4 
+Your task is to implement the following decryption sequence on the given sequence of bytes
 
 If you do this correctly, you should get a nice message on the output.
 
