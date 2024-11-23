@@ -207,7 +207,7 @@ If you'd like to learn more about SPI, you can do so [here](https://learn.sparkf
 
 # Exercise #3
 
-Take the starter code given in [week2_exercise3.cpp](https://github.com/Triton-Robotics-Training/Week-2/blob/main/week2_exercise3.cpp). This training can be done in a simple C++ online compiler, such as [this](https://www.programiz.com/cpp-programming/online-compiler/)
+Take the starter code given in [week2_exercise3.cpp](week2_exercise3.cpp). This training can be done in a simple C++ online compiler, such as [this](https://www.programiz.com/cpp-programming/online-compiler/)
 A number of helper functions have been given to you, such as
 
 - **can.sendPacket(short id, uint8_t* packet, short length)** (send a message with an id, pass in the packet's array, and the length of the packet)
