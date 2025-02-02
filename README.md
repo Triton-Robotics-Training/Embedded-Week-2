@@ -101,9 +101,25 @@ You also have two more functions purely for debugging
 
 Your task is to implement the following decryption sequence on the given sequence of bytes
 
+I have encrypted each byte separately with a specific bit scrambling, as such:
+
+### BYTE \[7 6 5 4 3 2 1 0]
+
+#### I took bits \[2 1 0] and moved it to bits \[7 6 5].
+
+#### I took bit \[3] and moved it to bit 0.
+
+#### I took bit 4, inverted it, and moved it to bit 3.
+
+#### I took bit 5 and moved it to bit 4.
+
+#### I took bits \[7 6], inverted it, and moved it to bits \[2 1].
+
+So all you need to do is reverse the operations I've done.
+
 If you do this correctly, you should get a nice message on the output.
 
-Here is an image that describes this visually:
+Here is an image that describes what **you** need to do visually:
 
 ![](assets/week2_exercise2.png)
 
